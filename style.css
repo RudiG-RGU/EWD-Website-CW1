@@ -176,7 +176,7 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[id="passwrd"], select {
+input[id="log-passwrd"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 4% 0 20% 10%;
@@ -187,6 +187,7 @@ input[id="passwrd"], select {
   font-family: 'Spartan', sans-serif;
   border-radius: 2rem;
   box-sizing: border-box;
+  
 }
 
 input[id="passwrd"], select {
