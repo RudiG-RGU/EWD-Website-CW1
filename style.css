@@ -153,7 +153,7 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[type=log-password], select {
+input[id="passwrd"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 4% 0 20% 10%;
@@ -166,7 +166,7 @@ input[type=log-password], select {
   box-sizing: border-box;
 }
 
-input[type=reg-password], select {
+input[id="passwrd"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 4% 0 0 10%;
@@ -179,7 +179,7 @@ input[type=reg-password], select {
   box-sizing: border-box;
 }
 
-input[type=re-password], select {
+input[id="re-enter_passwrd"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 4% 0 10% 10%;
