@@ -29,6 +29,29 @@ body {
   border-radius: 2rem;
 }
 
+#results{
+  margin: auto;
+	height: 80%;
+  width: 80%;
+  margin-top: 5%;
+  position: relative;
+	overflow: hidden;
+  background-image: url("images/auth-background.png");
+  background-position: center;
+  border-radius: 2rem;
+}
+
+#results-line{
+  margin: auto;
+	height: 2px;
+  width: 80%;
+  margin-top: 1%;
+  position: relative;
+	overflow: hidden;
+  background-image: url("images/line.png");
+  background-position: center;
+}
+
 #authentication-buttons{
   margin: auto;
 	height: 30%;
@@ -208,10 +231,12 @@ p {
 	text-align: center;
 }
 
-p2 {
-  font-family: 'Unica One', cursive;
-	color: black;
-  font-size: 1vw;
+.p2{
+text-align: center;
+font-family: 'Spartan', sans-serif;
+color: #ffffff;
+font-size: 2.5vw;
+margin: 1% 0 0 0;
 }
 
 h1 {
