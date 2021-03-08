@@ -3,19 +3,73 @@ html{
 	width: 100%;
 }
 
+body-home {
+	margin: 0 0 0 0;
+	height: 100%;
+  width: 100%;
+}
 
 body {
 	margin: 0 0 0 0;
 	height: 100%;
-	width: 100%;
+  width: 100%;
+  background-image: url("images/background.jpg");
+  background-size: 100% 100%;
 }
 
 #contents{
-	margin: 0 0 0 0;
-	height: 85%;
-	width: 100%;
+	height: 100%;
+  width: 100%;
 	overflow: hidden;
-	background-color: #ff3d00;
+}
+
+#authentication{
+  margin: auto;
+	height: 50%;
+  width: 20%;
+  margin-top: 10%;
+  position: relative;
+	overflow: hidden;
+  background-image: url("images/auth-background.png");
+  background-position: center;
+  border-radius: 2rem;
+}
+
+#authentication-buttons{
+  margin: auto;
+	height: 30%;
+  width: 100%;
+  position:absolute;
+  margin-left: 10%;
+  top:38%;
+}
+
+#login-btn{
+  margin: auto;
+	height: 30%;
+  width: 100%;
+  position:absolute;
+  margin-left: 10%;
+  top:50%;
+}
+
+.btn {
+  background-color: #00a10d;
+  border: none;
+  color: white;
+  width: 80%;
+  height: 30%;
+  border-radius: 2rem;
+  font-family: 'Spartan', sans-serif;
+  font-weight: bold;
+  font-size: 0.8vw;
+  margin-bottom: 10%;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: #006208;
 }
 
 #contents-left{
@@ -76,6 +130,32 @@ background-color: black;
 	display:flex;
 }
 
+input[type=text], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 15% 0 0 10%;
+  display: inline-block;
+  height: 8%;
+  font-size: 0.8vw;
+  border: 3px solid #00a10d;
+  font-family: 'Spartan', sans-serif;
+  border-radius: 2rem;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 4% 0 10% 10%;
+  display: inline-block;
+  height: 8%;
+  font-size: 0.8vw;
+  border: 3px solid #00a10d;
+  font-family: 'Spartan', sans-serif;
+  border-radius: 2rem;
+  box-sizing: border-box;
+}
+
 .container
  {
 	 width: 780px;
@@ -90,6 +170,12 @@ p {
 	font-size: 1vw;
 	margin: 0% 2% 0% 2%;
 	text-align: center;
+}
+
+p2 {
+  font-family: 'Unica One', cursive;
+	color: black;
+  font-size: 1vw;
 }
 
 
@@ -108,6 +194,44 @@ color: #ff3d00;
 font-size: 3vw;
 margin: 18px 0 0 0;
 }
+
+h3 {
+  font-family: 'Spartan', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: underline;
+  font-size: 1vw;
+  margin: 6% 0 0 0;
+  }
+
+h4 {
+  font-family: 'Spartan', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1vw;
+  margin: 10% 0 0 0;
+  }
+
+h5 {
+  font-family: 'Spartan', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8vw;
+  margin-top: 55%;
+  padding: 0 5% 0 5%;
+  line-height: 160%;
+  }
+
+h6 {
+  font-family: 'Spartan', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8vw;
+  margin-top: 28%;
+  padding: 0 5% 0 5%;
+  line-height: 160%;
+  }
+
 
 .line-1{
     position: relative;
