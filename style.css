@@ -163,7 +163,7 @@ background-color: black;
 	display:flex;
 }
 
-input[type=text], select {
+input[id="email_field"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 15% 0 0 10%;
@@ -176,7 +176,7 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[id="log-passwrd"], select {
+input[id="password_field"], select {
   width: 80%;
   padding: 12px 20px;
   margin: 4% 0 20% 10%;
