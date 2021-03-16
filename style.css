@@ -65,33 +65,6 @@ body {
   background-position: center;
 }
 
-#authentication-buttons{
-  margin: auto;
-	height: 30%;
-  width: 100%;
-  position:absolute;
-  margin-left: 10%;
-  top:38%;
-}
-
-#login-btn{
-  margin: auto;
-	height: 30%;
-  width: 100%;
-  position:absolute;
-  margin-left: 10%;
-  top:50%;
-}
-
-#register-btn{
-  margin: auto;
-	height: 30%;
-  width: 100%;
-  position:absolute;
-  margin-left: 10%;
-  top:60%;
-}
-
 .btn {
   background-color: #00a10d;
   border: none;

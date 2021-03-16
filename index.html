@@ -5,6 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 </head>
 
 <body>
@@ -16,7 +17,18 @@
       <input type="email" placeholder="EMAIL" id="email_field" />
       <input type="password" placeholder="PASSWORD" id="password_field" />
 
-      <button onclick="login()">LOGIN</button>
+      <button id="login-btn" onclick="login()">LOGIN</button>
+
+      <script>  
+        $("#password_field").keypress(function(event) { 
+            if (event.keyCode === 13) { 
+                $("#login-btn").click(); 
+            } 
+        }); 
+   
+        $("#login-btn").click(function() { 
+        }); 
+      </script>
 
       <h6>The Choice is a interactive user interface that offes you a choice. The choice you make is stored and
         used for analytical purposes anonymously.</h6>
@@ -25,7 +37,7 @@
     <div id="user_div" class="loggedin-div">
       <h3>Welcome User</h3>
       <p class="p3" id="user_para">.</p>
-      <button onclick="welcome()">PROGRESS</button>
+      <button id="progress-btn" onclick="welcome()">PROGRESS</button>
       <button onclick="logout()">LOGOUT</button>
 
     </div>
