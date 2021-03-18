@@ -41,7 +41,7 @@ function login(){
 }
 
 function welcome(){
-  self.location="home.html"
+  self.location="home.php"
 }
 
 function logout(){
