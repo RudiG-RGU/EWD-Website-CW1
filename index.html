@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <title>The Choice - Rudi Greig</title>
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon" />
 </head>
 
 <body>
@@ -17,7 +18,7 @@
       <input type="email" placeholder="EMAIL" id="email_field" />
       <input type="password" placeholder="PASSWORD" id="password_field" />
 
-      <button onclick="login()">LOGIN</button>
+      <button id="login-btn" onclick="login()">LOGIN</button>
 
       <script>  
         $("#password_field").keypress(function(event) { 
