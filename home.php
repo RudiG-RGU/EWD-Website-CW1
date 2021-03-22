@@ -7,7 +7,7 @@ $pass = "Password";
 $dbname = "click_counter";
  
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $user, $pass, $dbname);
 
 // Check connection
 if ($conn->connect_error) {

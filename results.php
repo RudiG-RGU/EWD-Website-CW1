@@ -1,10 +1,15 @@
 <?php
-//MySQL database variables
-//You need to change these variables to be right for your MySQL install
-$host = "localhost";
-$user = "root";
-$pass = "Password";
-$dbname = "click_counter";
+
+/****************************************************************
+   Modify content below according your MySQL database settings
+*****************************************************************/
+
+
+// MySQL Database
+$host = "localhost";      // MySQL Host
+$user = "root";             // Username for you database
+$pass = "Password";             // Password with your username
+$dbname = "click_counter";           // Database Name
 
 
 /****************************************************************
