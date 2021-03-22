@@ -5,61 +5,164 @@ $host = "localhost";
 $user = "root";
 $pass = "Password";
 $dbname = "click_counter";
- 
-//DO NOT CHANGE THE FOLLOWING CODE!
- 
-//start a PHP session
-//this prevents spamming the click count by refreshing the page
-session_start();
- 
-//create current page constant
-$curPage = mysql_real_escape_string(htmlspecialchars($_SERVER['PHP_SELF']));
- 
-//set number of clicks variable to 0
-$clicks = 0;
- 
-//do not recount if page currently loaded
-if($_SESSION['page'] != $curPage) {
-   //set current page as session variable
-   $_SESSION['page'] = $curPage;
- 
-   //try to connect to MySQL server
-   if(!$link = mysql_connect($host, $user, $pass)) {
-      echo "Could not connect to MySQL server. Check your login information; the MySQL server may also be offline or temporarily overloaded.";
-   }
-   //try to select database
-   elseif(!mysql_select_db($dbname)) {
-      echo "Cannot select database.";
-   }
-   else {
-      //get current click count for page from database;
-      //output error message on failure
-      if(!$rs = mysql_query("SELECT * FROM click_count WHERE page_url = '$curPage'")) {
-         echo "Could not parse click counting query.";
-      }
-      //if no record for this page found,
-      elseif(mysql_num_rows($rs) == 0) {
-         //try to create new record and set count for new page to 1;
-         //output error message if problem encountered
-         if(!$rs = mysql_query("INSERT INTO click_count (page_url, page_count) VALUES ('$curPage', 1)")) {
-            echo "Could not create new click counter for this page.";
-         }
-         else {
-            $clicks = 1;
-         }
-      }
-      else {
-         //get number of clicks for page and add 1
-         $row = mysql_fetch_array($rs);
-         $clicks = $row['page_count'] + 1;
-         //update click count in database;
-         //report error if not updated
-         if(!$rs = mysql_query("UPDATE click_count SET page_count = $clicks WHERE page_url = '$curPage'")) {
-            echo "Could not save new click count for this page.";
-         }
-      }
-   }
+
+
+/****************************************************************
+  DO NOT modify anything below if you are not sure what they do
+*****************************************************************/
+
+
+// Get url input
+$inputUrl = $_GET['forward'];
+
+// Format input URL for recording and redirecting
+if (stripos($inputUrl, "http://") === 0) {
+
+	$redirectUrl = $inputUrl;
+	$recordUrl = substr($inputUrl, strlen("http://"));
+
+} elseif (stripos($inputUrl, "https://") === 0) {
+
+	$redirectUrl = $inputUrl;
+	$recordUrl = substr($inputUrl, strlen("https://"));
+
+} elseif (stripos($inputUrl, "//") === 0) {
+
+	$redirectUrl = $inputUrl;
+	$recordUrl = substr($inputUrl, strlen("//"));
+
+} else {
+
+	$redirectUrl = "http://" . $inputUrl;
+	$recordUrl = $inputUrl;
+
 }
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+
+    die("Connection failed: " . $conn->connect_error);
+
+} 
+
+// sql to create table
+$sql = "CREATE TABLE ClickRecord (
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+Url TEXT NOT NULL,
+Clicks INT UNSIGNED NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+
+	//echo "Checking Table...<br>";
+	//echo "Table created successfully<br>";
+
+	// Insert new row
+	//echo "Inserting...<br>";
+	$sql = "INSERT INTO ClickRecord (Url, Clicks)
+	VALUES ('$recordUrl', '1')";
+
+	// Check if row added successfully
+	if ($conn->query($sql) === TRUE) {
+		
+		//echo "Checking Row...<br>";
+
+	} else {
+
+		//echo "Error: " . $sql . "<br>" . $conn->error;
+
+		// Updating existing row
+		//echo "Checking Row...<br>";
+		//echo "Updating...<br>";
+		$sql = "UPDATE ClickRecord SET Clicks=Clicks+1 WHERE Url='{$recordUrl}'";
+
+		// Check if row updated successfully
+		if ($conn->query($sql) === TRUE) {
+
+			//echo "Record updated successfully";
+
+		} else {
+
+			//echo "Error updating record: " . $conn->error;
+
+		}
+
+	}
+
+} else {
+
+	//echo "Updating Existing Record...<br>";
+	
+	$sql = "SELECT Url FROM ClickRecord WHERE Url='{$recordUrl}'";
+	$checkResult = $conn->query($sql);
+
+	if ($checkResult->num_rows == 1) {
+
+		// output data of the row
+		while($checkRow = $checkResult->fetch_assoc()) {
+
+			$output = $checkRow["Url"];
+
+		}
+
+			if ($output == $recordUrl) {
+
+				// Updating existing row
+				$sql = "UPDATE ClickRecord SET Clicks=Clicks+1 WHERE Url='{$recordUrl}'";
+
+				// Check if row updated successfully
+				if ($conn->query($sql) === TRUE) {
+
+					//echo "Record updated successfully";
+
+				} else {
+
+					//echo "Error updating record: " . $conn->error;
+
+				}
+
+			}
+
+	} else {
+
+		// Insert new row
+		$sql = "INSERT INTO ClickRecord (Url, Clicks)
+		VALUES ('$recordUrl', '1')";
+
+		// Check if row added successfully
+		if ($conn->query($sql) === TRUE) {
+
+			//echo "New record created successfully";
+
+		} else {
+
+			//echo "Error: " . $sql . "<br>" . $conn->error;
+
+		}
+
+	}
+
+}
+
+header("Location: ".$redirectUrl);
+
+/*
+	Written by Steve-luo <https://steve-luo.com>
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 ?>
 <!DOCTYPE html>
 <html>
