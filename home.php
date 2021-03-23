@@ -1,7 +1,3 @@
-<?php
-include("config.php");
-$sql = mysqli_query($link, "SELECT id, url, banner, name FROM banners");
-  ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,18 +17,6 @@ $sql = mysqli_query($link, "SELECT id, url, banner, name FROM banners");
 
 	<div id="contents-left">
 
-    <?php
-    while($result = mysqli_fetch_object($sql)):
-    ?>
-    <p>
-    <a href="counter.php?id=<?php echo $result->id; ?>">
-    <img src="<?php echo $result->banner; ?>" alt="<?php echo $result->name; ?>" />
-    </a>
-    </p>
-    <?php
-    endwhile;
-    ?>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 		<a href="results.php">
@@ -44,7 +28,7 @@ $sql = mysqli_query($link, "SELECT id, url, banner, name FROM banners");
 
 	</div>
 
-	<h1><?php echo $clicks; ?></h1>
+	<h1>RED PILL</h1>
 
 	<div id="left-margin">
 	</div>
