@@ -1,40 +1,25 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL|E_STRICT);
-	//Please set the following variables for your mysql database:
-	$db_hostname = "localhost";  //usually "localhost be default"
-	$db_username = "root";  //your user name "I use root"
-	$db_pass = "Password";  //the password for your user "root folder have not password"
-	$db_name = "click_counter";  //the name of the database
-	
-	
-	/*MYSQL DATABASE CONNECTION/ TRACKING FUNCTIONS
-	--------------------------------------*/
-	// connect to database
-	$dbh = mysql_connect ($db_hostname, $db_username, $db_pass) or die ('I cannot connect to the database because: ' . mysql_error());
-	mysql_select_db ($db_name);
-	
-	// get value from hidden feild
-	$table_name = $_POST["inp1"];
-	
-	// select value from dtabae
-	$getData = mysql_query("SELECT table_name FROM Data_Feild"); 
-	$num_rows = mysql_num_rows($getData);
-	
-	if($num_rows==0)
-	{
-		$writeData = mysql_query("INSERT INTO table_name (column1) VALUES ($table_name)" );
-	
+	$db_hostname = "localhost";
+	$db_username = "root";
+	$db_pass = "Password";
+	$db_name = "counter";
+
+	mysqli_connect=mysqli_connect($hostname, $db_user, $db_pass, $db_name);
+	if (mysql_connect_errno()){
+		die("Error connecting to Database.")
 	}
-	else if ($num_rows > 0){
-		$writeData = mysql_query('UPDATE table_name SET column1 ="'.$table_name.'"');
+
+	$query="SELECT * FROM counter_table";
+	$result=mysqli_query($connection, $query);
+
+	if (!result){
+		die("Retriving Query Error<br>".query);
 	}
-	else{
-		mysql_error();
-	}
-	
-	}
-	?>
+	$total_visitors=mysqli_num_rows($result);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,16 +35,6 @@ error_reporting(E_ALL|E_STRICT);
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon" />
-
-	<script language="javascript">
-			function cnt()
-			{
-				var count=parseInt(document.frm1.inp1.value);
-				count++;
-				document.frm1.inp1.value=count;
-				//alert(document.frm1.inp1.value);
-			}
-			</script>
 </head>
 
 <body>
@@ -71,21 +46,12 @@ error_reporting(E_ALL|E_STRICT);
 			<p class="p2">RESULTS</p>
 
 			<div id="results-line">
-
 			</div>
-
-			<form name="frm1" method="post" action="">
-			<h1>Evet Handler with multiple statements</h1>
-			<p>Displays the number of times you click on your image.</p>
-			<img src="pill.png" onClick="cnt()"/>
-			<input type="hidden" name="inp1" value="0"/>
-			<input type="submit" name="submit" value="Submit"/>
-			</form>
 
 			<div id="result-red">
 
 				<div id="result-red-text">
-					<h2> <?php print $visits; ?> </h2>
+					<h2><?php echo $total_visitors; ?></h2>
 				</div>
 			</div>
 
