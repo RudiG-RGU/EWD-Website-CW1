@@ -1,24 +1,25 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL|E_STRICT);
-	$db_hostname = "localhost";
-	$db_username = "root";
-	$db_pass = "Password";
-	$db_name = "counter";
+$con=mysqli_connect("localhost","root","Password","click_counter");
 
-	mysqli_connect=mysqli_connect($hostname, $db_user, $db_pass, $db_name);
-	if (mysql_connect_errno()){
-		die("Error connecting to Database.")
-	}
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  exit();
+} else {
 
-	$query="SELECT * FROM counter_table";
-	$result=mysqli_query($connection, $query);
 
-	if (!result){
-		die("Retriving Query Error<br>".query);
-	}
-	$total_visitors=mysqli_num_rows($result);
+  $countNo = mysqli_query($con, "SELECT * from `clicks`");
+  $results = mysqli_fetch_array($countNo, MYSQLI_NUM);
 
+  $sql = "UPDATE clicks SET red=$results[1]+1";  
+  mysqli_query($con, $sql);
+
+  $sql = "UPDATE clicks SET blue=$results[0]+1";  
+  mysqli_query($con, $sql);
+
+  mysqli_close($con);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,13 +52,13 @@ error_reporting(E_ALL|E_STRICT);
 			<div id="result-red">
 
 				<div id="result-red-text">
-					<h2><?php echo $total_visitors; ?></h2>
+					<h2> <?php echo "$results[1]"; ?> </h2>
 				</div>
 			</div>
 
 			<div id="result-blue">
 				<div id="result-blue-text">
-					<h1></h1>
+					<h1> <?php echo "$results[0]"; ?> </h1>
 				</div>
 			</div>
 

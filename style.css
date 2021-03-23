@@ -203,7 +203,7 @@ h3 {
   color: #ffffff;
   text-decoration: underline;
   font-size: 1vw;
-  margin: 6% 0 0 0;
+  margin: 0 0 0 0;
   }
 
 h4 {
@@ -211,7 +211,7 @@ h4 {
   text-align: center;
   color: #ffffff;
   font-size: 1vw;
-  margin: 10% 0 0 0;
+  margin: 4% 0 0 0;
   }
 
 h5 {
@@ -229,7 +229,7 @@ h6 {
   text-align: center;
   color: #ffffff;
   font-size: 0.8vw;
-  margin-top: 40px;
+  margin-top: 30px;
   line-height: 160%;
   }
 
@@ -306,7 +306,6 @@ h6 {
   opacity: 1;
 }
 
-
 /* Login System */
 .main-div, .loggedin-div {
   width: 80%;
@@ -370,7 +369,6 @@ margin-left: 25%;
 background-image: url("images/redpill.png");
 background-repeat: no-repeat;
 background-size: auto 100%;
-
 }
 
 #result-red-text{

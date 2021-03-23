@@ -15,10 +15,12 @@
 
     <div id="login_div" class="main-div">
       <h3>Welcome to the Choice.</h3>
-      <input type="email" placeholder="EMAIL" id="email_field" />
-      <input type="password" placeholder="PASSWORD" id="password_field" />
+      <button id="guest-btn" onclick="guest()">MAKE THE CHOICE</button>
+      <h4>or continue as admin:</h4>
+      <input type="email" placeholder="ADMIN EMAIL" id="email_field" />
+      <input type="password" placeholder="ADMIN PASSWORD" id="password_field" />
 
-      <button id="login-btn" onclick="login()">LOGIN</button>
+      <button id="login-btn" onclick="login()">ADMIN LOGIN</button>
 
       <script>  
         $("#password_field").keypress(function(event) { 
@@ -36,7 +38,7 @@
     </div>
 
     <div id="user_div" class="loggedin-div">
-      <h3>Welcome User</h3>
+      <h3>Welcome Admin</h3>
       <p class="p3" id="user_para">.</p>
       <button id="progress-btn" onclick="welcome()">PROGRESS</button>
       <button onclick="logout()">LOGOUT</button>
