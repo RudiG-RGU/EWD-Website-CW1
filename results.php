@@ -1,65 +1,31 @@
 <?php
-//MySQL database variables
-//You need to change these variables to be right for your MySQL install
-$host = "localhost";
-$user = "root";
-$pass = "Password";
-$dbname = "click_counter";
- 
-//DO NOT CHANGE THE FOLLOWING CODE!
- 
-//start a PHP session
-//this prevents spamming the click count by refreshing the page
-session_start();
- 
-//create current page constant
-$curPage = mysqli_real_escape_string(htmlspecialchars($_SERVER['PHP_SELF']));
- 
-//set number of clicks variable to 0
-$clicks = 0;
- 
-//do not recount if page currently loaded
-if($_SESSION['page'] != $curPage) {
-   //set current page as session variable
-   $_SESSION['page'] = $curPage;
- 
-   //try to connect to MySQL server
-   if(!$link = mysqli_connect($host, $user, $pass)) {
-      echo "Could not connect to MySQL server. Check your login information; the MySQL server may also be offline or temporarily overloaded.";
-   }
-   //try to select database
-   elseif(!mysqli_select_db($dbname)) {
-      echo "Cannot select database.";
-   }
-   else {
-      //get current click count for page from database;
-      //output error message on failure
-      if(!$rs = mysqli_query("SELECT * FROM click_count WHERE page_url = '$curPage'")) {
-         echo "Could not parse click counting query.";
-      }
-      //if no record for this page found,
-      elseif(mysqli_num_rows($rs) == 0) {
-         //try to create new record and set count for new page to 1;
-         //output error message if problem encountered
-         if(!$rs = mysqli_query("INSERT INTO click_count (page_url, page_count) VALUES ('$curPage', 1)")) {
-            echo "Could not create new click counter for this page.";
-         }
-         else {
-            $clicks = 1;
-         }
-      }
-      else {
-         //get number of clicks for page and add 1
-         $row = mysqli_fetch_array($rs);
-         $clicks = $row['page_count'] + 1;
-         //update click count in database;
-         //report error if not updated
-         if(!$rs = mysqli_query("UPDATE click_count SET page_count = $clicks WHERE page_url = '$curPage'")) {
-            echo "Could not save new click count for this page.";
-         }
-      }
-   }
-}
+ini_set('display_errors', 1);
+error_reporting(E_ALL|E_STRICT);
+    $servername = "localhost";
+    $username = "root";
+    $password = "Password";
+    $dbname = "click_counter";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    $sql = "UPDATE Counter SET visits = visits+1 WHERE id = 1";
+    $conn->query($sql);
+
+    $sql = "SELECT visits FROM Counter WHERE id = 1";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $visits = $row["visits"];
+        }
+    } else {
+        echo "no results";
+    }
+    
+    $conn->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,7 +59,7 @@ if($_SESSION['page'] != $curPage) {
 			<div id="result-red">
 
 				<div id="result-red-text">
-					<h2> <?php echo $clicks; ?> </h2>
+					<h2> <?php print $visits; ?> </h2>
 				</div>
 			</div>
 
