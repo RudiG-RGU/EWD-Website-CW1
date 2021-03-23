@@ -1,20 +1,9 @@
 <?php
 
-/****************************************************************
-   Modify content below according your MySQL database settings
-*****************************************************************/
-
-
-// MySQL Database
 $host = "localhost";      // MySQL Host
 $user = "root";             // Username for you database
 $pass = "Password";             // Password with your username
 $dbname = "click_counter";           // Database Name
-
-
-/****************************************************************
-  DO NOT modify anything below if you are not sure what they do
-*****************************************************************/
 
 
 // Get url input

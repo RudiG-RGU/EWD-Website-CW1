@@ -1,6 +1,5 @@
 <?php
-//MySQL database variables
-//You need to change these variables to be right for your MySQL install
+
 $host = "localhost";
 $user = "root";
 $pass = "Password";
@@ -28,7 +27,7 @@ if ($result->num_rows > 0) {
 
 } else {
 
-	echo "No Data Available";
+	echo "";
 
 }
 
@@ -55,7 +54,7 @@ $conn->close();
 
 	<div id="contents-left">
 
-		<a href="results.html">
+		<a href="results.php">
 			<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 			<div class="figure">
 				<img class="Sirv image-main">
@@ -73,7 +72,7 @@ $conn->close();
 
 	<div id="contents-right">
 
-		<a href="results.html">
+		<a href="results.php">
 			<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 			<div class="figure-right">
 				<img class="Sirv image-main">
