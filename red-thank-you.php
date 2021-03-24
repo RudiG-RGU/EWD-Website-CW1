@@ -12,6 +12,9 @@ if (mysqli_connect_errno()) {
   $countNo = mysqli_query($con, "SELECT * from `clicks`");
   $results = mysqli_fetch_array($countNo, MYSQLI_NUM);
 
+  $sql = "UPDATE clicks SET red=$results[0]+1";  
+  mysqli_query($con, $sql);
+
   mysqli_close($con);
 }
 ?>
@@ -19,7 +22,7 @@ if (mysqli_connect_errno()) {
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>The Choice - Rudi Greig</title>
+	<title>The Choice - Thank You</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
@@ -34,31 +37,21 @@ if (mysqli_connect_errno()) {
 
 <body>
 
-	<div id="contents">
+    <div id="contents">
 
-		<div id="results">
+        <div id="results">
 
-			<p class="p2">RESULTS</p>
+            <p class="p2">Thank You</p>
 
-			<div id="results-line">
-			</div>
+            <div id="results-line">
+            </div>
 
-			<div id="result-red">
+            <h4>Thank you for participating in The Choice.</h4>
+            <h6>Your choice has been collected and stored with other users and will be reviewed by admins.</h6>
 
-				<div id="result-red-text">
-					<h2> <?php echo "$results[0]"; ?> </h2>
-				</div>
-			</div>
+        </div>
 
-			<div id="result-blue">
-				<div id="result-blue-text">
-					<h1> <?php echo "$results[1]"; ?> </h1>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
+    </div>
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
