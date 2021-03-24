@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>The Choice - Rudi Greig</title>
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon" />
 </head>
 
 <body>
 
+  <!--Authentication layout with keypress function-->
   <div id="authentication">
 
     <div id="login_div" class="main-div">
@@ -21,22 +23,22 @@
       <input type="password" placeholder="ADMIN PASSWORD" id="password_field" />
 
       <button id="login-btn" onclick="login()">ADMIN LOGIN</button>
+      <!--Assigns enter key to press the login button-->
+      <script>
+        $("#password_field").keypress(function (event) {
+          if (event.keyCode === 13) {
+            $("#login-btn").click();
+          }
+        });
 
-      <script>  
-        $("#password_field").keypress(function(event) { 
-            if (event.keyCode === 13) { 
-                $("#login-btn").click(); 
-            } 
-        }); 
-   
-        $("#login-btn").click(function() { 
-        }); 
+        $("#login-btn").click(function () {
+        });
       </script>
 
       <h6>The Choice is a interactive user interface that offes you a choice. The choice you make is stored and
         used for analytical purposes anonymously.</h6>
     </div>
-
+    <!--Welcome screen confirming identity-->
     <div id="user_div" class="loggedin-div">
       <h3>Welcome Admin</h3>
       <p class="p3" id="user_para">.</p>
@@ -46,10 +48,10 @@
     </div>
 
   </div>
-
+  <!--Connects to Firebse Authentication key so user inputs can be reviewed-->
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <script>
-    // Initialize Firebase
+    // Initialise Firebase
     var config = {
       apiKey: "AIzaSyBbfl1dzKM-aYc3YFBm4-PBPutM24f0--0",
       authDomain: "fir-web-login-8b7c5.firebaseapp.com",
@@ -60,7 +62,7 @@
     };
     firebase.initializeApp(config);
   </script>
-
+  <!--Assigns firebase functionality and errror checking to user inputs and loats correct pages-->
   <script src="index.js"></script>
 
 </body>

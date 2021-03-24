@@ -1,4 +1,4 @@
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
 
@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var user = firebase.auth().currentUser;
 
-    if(user != null){
+    if (user != null) {
 
       var email_id = user.email;
       document.getElementById("user_para").innerHTML = email_id;
@@ -23,12 +23,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-function login(){
+function login() {
 
   var userEmail = document.getElementById("email_field").value;
   var userPass = document.getElementById("password_field").value;
 
-  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -40,14 +40,14 @@ function login(){
 
 }
 
-function welcome(){
-  self.location="results.php"
+function welcome() {
+  self.location = "results.php"
 }
 
-function guest(){
-  self.location="home.html"
+function guest() {
+  self.location = "home.html"
 }
 
-function logout(){
+function logout() {
   firebase.auth().signOut();
 }

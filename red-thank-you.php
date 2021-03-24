@@ -1,6 +1,8 @@
 <?php
+// Error checking
 ini_set('display_errors', 1);
 error_reporting(E_ALL|E_STRICT);
+//connects to SQL database
 $con=mysqli_connect("localhost","root","Password","click_counter");
 
 if (mysqli_connect_errno()) {
@@ -8,7 +10,7 @@ if (mysqli_connect_errno()) {
   exit();
 } else {
 
-
+//Adds a click to the counter if the user visits this page and updates results
   $countNo = mysqli_query($con, "SELECT * from `clicks`");
   $results = mysqli_fetch_array($countNo, MYSQLI_NUM);
 
@@ -53,28 +55,25 @@ if (mysqli_connect_errno()) {
 
     </div>
 
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+	<!--Connects to Firebse Authentication key so user inputs can be reviewed-->
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyBbfl1dzKM-aYc3YFBm4-PBPutM24f0--0",
-    authDomain: "the-choice-1f1f6.firebaseapp.com",
-    projectId: "the-choice-1f1f6",
-    storageBucket: "the-choice-1f1f6.appspot.com",
-    messagingSenderId: "194155024479",
-    appId: "1:194155024479:web:c37b7b3195207d11128bea",
-    measurementId: "G-GG1E448JD2"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+	<script>
+		// Initialise Firebase
+		var firebaseConfig = {
+			apiKey: "AIzaSyBbfl1dzKM-aYc3YFBm4-PBPutM24f0--0",
+			authDomain: "the-choice-1f1f6.firebaseapp.com",
+			projectId: "the-choice-1f1f6",
+			storageBucket: "the-choice-1f1f6.appspot.com",
+			messagingSenderId: "194155024479",
+			appId: "1:194155024479:web:c37b7b3195207d11128bea",
+			measurementId: "G-GG1E448JD2"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+	</script>
 
 </body>
